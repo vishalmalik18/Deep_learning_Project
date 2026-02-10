@@ -1,1 +1,23 @@
+image_size,channels,epoch,batch_size,seed = (256,256),3,50,32,42
 
+df = tf.keras.preprocessing.image_dataset_from_directory(data_dir,shuffle=True,
+                                                         image_size=image_size,
+                                                         batch_size=batch_size,seed=seed)|
+
+train_ds = tf.keras.utils.image_dataset_from_directory(
+    data_dir,
+    validation_split=0.2,
+    subset="training",
+    seed=seed,
+    image_size=image_size,
+    batch_size=batch_size
+)
+
+val_ds = tf.keras.utils.image_dataset_from_directory(
+    data_dir,
+    validation_split=0.2,
+    subset='validation',
+    seed=seed,
+    image_size=image_size,
+    batch_size=batch_size
+)
